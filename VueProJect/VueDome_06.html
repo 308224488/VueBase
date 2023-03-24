@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v_model</title>
+    <script src="js/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- v_model用于在表单元素里创建双向数据绑定，以便在视图和模型之间进行数据交换 -->
+    <div id="v_model" v-cloak>
+        <p>姓名:<input type="text" v-model="user.name"></p>
+        <p>密码:<input type="password" v-model="user.pawssard"></p>
+        <button @click="clickLogin()">Login</button>
+    </div>
+</body>
+<script>
+    var vue=new Vue({   
+        el:"#v_model",
+        data:{
+            user:{name:"",pawssard:""}//开发中使用对象更方便
+        },
+        methods:{
+            clickLogin(){
+              alert(this.user.name);
+              alert(this.user.pawssard);
+            }
+        }
+    })
+</script>
+</html>

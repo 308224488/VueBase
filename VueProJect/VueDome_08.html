@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for改造分页</title>
+    <script src="js/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+        .page .link{
+            background-color: black;color: aqua;border: 1px solid black;
+            display: inline-block;font-size: 28px;margin: 5px;width: 30px;text-align: center;
+        }
+        .link:hover,.link:active{background-color: aquamarine;}
+    </style>
+
+</head>
+<body>
+    <div id="fenYe" v-cloak>
+       <h1>当前为第{{nowIndex}}页</h1> 
+        <!-- <div class="page">
+            <a class="link active" v-bind:class="[nowIndex==1?'active':'']"@click="clickChange(1)">1</a>
+            <a class="link"v-bind:class="[nowIndex==2?'active':'',]"@click="clickChange(2)">2</a>
+            <a class="link"v-bind:class="[nowIndex==3?'active':'']"@click="clickChange(3)">3</a>
+            <a class="link"v-bind:class="[nowIndex==4?'active':'']"@click="clickChange(4)">4</a>
+            <a class="link"v-bind:class="[nowIndex==5?'active':'']"@click="clickChange(5)">5</a>
+        </div> -->
+        <div class="page">
+            <a v-for="nums in pages" class="link active" v-bind:class="{active:nowIndex==nums}"@click="clickChange(nums)">{{nums}}</a>
+            <!-- <a class="link"v-bind:class="{active:nowIndex==2}"@click="clickChange(2)">2</a>
+            <a class="link"v-bind:class="{active:nowIndex==3}"@click="clickChange(3)">3</a>
+            <a class="link"v-bind:class="{active:nowIndex==4}"@click="clickChange(4)">4</a>
+            <a class="link"v-bind:class="{active:nowIndex==5}"@click="clickChange(5)">5</a> -->
+        </div>
+    </div>
+  
+</body>
+<script>
+    var vue=new Vue({
+        el:"#fenYe",
+        data:{
+         nowIndex:1,
+         pages:10
+        },
+        methods:{
+            clickChange(index){
+                 this.nowIndex=index;
+            }
+        }
+
+    })
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    
+    <div id="userInfo">
+      
+       <h1> {{name}}</h1>
+       <!-- 数据改变试图 -->
+       <span v-html="age"></span>
+       <span v-text="">{{sex}}</span>
+       <input v-model="name">
+    </div>
+ 
+    <!-- 第一步 引入 -->
+    <script src="js/vue.js"></script>
+    <script>
+    // 初始化
+       var vue=new Vue({
+        //代表VUE从哪里开始执行和编译
+          el:"#userInfo",
+          data:{
+              name:"礼遇",
+              age:20,
+              sex:"男"
+          }
+
+       })
+    </script>
+</body>
+
+</html>

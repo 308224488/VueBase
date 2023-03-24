@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue的插值表达式</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>    
+    <div id="userInfo">
+        <!-- v-text="" 指令   {{info.name}}插值表达式 -->
+        <p v-text="">名称:{{info.name}}年龄:{{info.age}}</p>
+        <p v-text="">总价:{{info.price*info.count}}</p>       
+        <p v-if="userSex.sex==0">男</p>
+        <p v-if="userSex.sex==1">女</p>
+        <!-- 三目运算符 -->
+        <p>{{userSex.sex==0?"男":"女"}}</p>
+    </div>
+</body>
+<script>
+    var vue=new Vue({
+        el:"#userInfo",
+        data:{
+            info:{name:"螺丝钉",age:20,price:2.5,count:39},
+            userSex:{sex:0}
+        }           
+    })
+</script>
+</html>

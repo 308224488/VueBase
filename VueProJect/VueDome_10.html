@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件指令v-on</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+    <!-- v-on可以用@代替
+         不能和js混用，会破坏作用域 -->
+    <div id="onClick">
+       <button v-on:click="sedinfo()">提交</button>
+       <button @click="sedinfo()">提交</button>
+       <button @click="sedinfo($event)">提交</button>
+    </div>
+</body>
+<script>
+    var vue=new Vue({
+        el:"#onClick",
+        data:{
+            userData:{id:1,name:"螺丝刀",sex:0}
+        },
+        methods:{
+            sedinfo(vent){
+                console.log(vent)
+                alert("提交成功");
+            }
+        }
+    })
+</script>
+</html>

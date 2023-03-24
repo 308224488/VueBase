@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if</title>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+    <div id="ifElse">
+        <!-- 不能插入其他标签 不能断层 -->
+        <p v-if="userData.sex==0">男</p>
+        <p v-else-if="userData.sex==1">女</p>
+        <p v-else>同志</p>
+        <div>
+            <!-- 区别：
+            v-if是惰性的，它会根据表达式的值来动态地添加或删除DOM元素。
+            v-show则是通过CSS样式来控制元素的显示或隐藏。 -->
+            <p v-if="userData.sex==0">男</p>
+            <p v-show="userData.sex==0">男</p>
+        </div>
+    </div>
+    
+</body>
+<script>
+    var vue=new Vue({
+       el:"#ifElse",
+       data:{
+         userData:{id:1,name:"螺丝刀",sex:0}
+       }
+    })
+</script>
+</html>

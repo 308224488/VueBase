@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+       [v-cloak]{
+        display:none;
+       }
+        table{border-collapse: collapse;width: 100%;}
+        table th, table td{
+            border: 1px solid greenyellow;text-align: center;
+        }
+        table .odd{
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+    <div id="Utable" v-cloak>
+        <!-- 循环数组 -->
+         <table >
+            <th>选项</th>
+            <th>编号</th>
+            <th>id</th>
+             <th>名称</th>
+             <th>价格</th>
+             <th>数量</th>
+             <th>总价</th>
+             <th>操作</th>
+             <tr v-for="(info,index) in infos":class="[index %2==0?'odd':'']":key="userInFo.id">
+                <!-- 索引 -->
+                <td><input type="checkbox"></td>
+                <td>{{index}}</td>
+                <td>{{info.id}}</td>
+                <td>{{info.name}}</td>
+                <td>{{info.price}}</td>
+                <td>{{info.count}}</td>
+                <td>{{info.price*info.count}}</td>
+                <td><button @click="deleteinfo(index)">删除</button></td>
+             </tr>
+         </table>
+         <!-- 循环对象 -->
+         <!-- 顺序不能反 -->
+        <div v-for="value,key,index in userInFo">
+         <p>{{index}}----{{key}}-----{{value}}</p>
+
+        </div>
+    </div>
+</body>
+<script>
+     var vue =new Vue({
+        el:"#Utable",
+        data:{
+           userInFo:{id:1,name:"螺丝刀",price:3,count:32},
+           infos:[
+            {id:1,name:"螺丝刀",price:3,count:32},
+            {id:2,name:"螺丝钉",price:1.25,count:12},
+            {id:3,name:"开瓶器",price:4,count:3}
+           ]
+        },
+        methods:{
+              deleteinfo(index){
+                this.infos.splice(index,1);
+              }
+        }
+     })
+</script>
+</html>

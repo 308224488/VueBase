@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-text V-html V-cloak</title>
+    <script src="js/vue.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- v-cloak在页面渲染前隐藏未编译的 Vue.js 模板代码，以防止页面在渲染时出现闪烁的问题 -->
+    <div id="app" v-cloak>
+        <p v-html="name"></p>
+        <p v-text="name"></p>
+    </div>
+
+</body>
+<script>
+    // 在 Vue.js 生命周期中，created() 钩子函数会在 Vue 实例被创建之后立即调用，
+    // 此时 Vue.js 的响应式数据已经生效，并且可以在 created() 中访问到它们，也可以执行一些初始化逻辑。
+    var vue = new Vue({
+        el: "#app",
+        created() {
+            alert("666");
+        },
+        data: {
+            name: "<h1>螺丝</h1>",
+            price: 7.54,
+            count: 39
+        }
+
+    })
+</script>
+
+</html>

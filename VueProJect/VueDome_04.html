@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind</title>
+    <script src="js/vue.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- v-bind指令可以将Vue实例的数据绑定到HTML元素的属性上
+    即实现了数据和属性的关联，从而实现了响应式的页面更新和交互。 -->
+    <div id="app" v-cloak>
+        <p v-html="name" v-bind:name="name"v-bind:price="price"></p>
+        <p v-text="name"></p>
+    </div>
+
+</body>
+<script>
+    var vue = new Vue({
+        el: "#app",
+        created() {
+            alert("666");
+        },
+        data: {
+            name: "<h1>螺丝</h1>",
+            price: 7.54,
+            count: 39
+        }
+
+    })
+</script>
+
+</html>
